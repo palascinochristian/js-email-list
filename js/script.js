@@ -1,8 +1,11 @@
 // DOM ELEMENTS
 
 const mailistElm = document.getElementById("mailist");
+const genBtnElm = document.getElementById("btn")
 
-
+// FUNCTIONS
+const mailGen = () => {
+mailistElm.innerHTML = ""
 for(let i=0; i<10; i++){
 axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
 .then(function (response) {
@@ -10,3 +13,12 @@ axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
     mailistElm.innerHTML += `<li>${mailist}</li>`
   })
 }
+}
+
+//EVENTS
+
+//on page load
+mailGen();
+
+//click button
+genBtnElm.addEventListener("click", mailGen)
